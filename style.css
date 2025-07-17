@@ -1,0 +1,244 @@
+body {
+    font: 1.5em / 1.5 sans-serif;
+}
+
+/* ------------------------------------- */
+/* States start */
+
+/* ------------------------------------- */
+/* Stable */
+
+#stable:checked ~ .creature {
+    background-color: greenyellow;
+}
+
+#stable:checked ~ .creature .left-paw {
+    transform: rotate(0.04turn);
+}
+
+#stable:checked ~ .creature .right-paw {
+    transform: rotate(-0.04turn);
+}
+
+#stable:checked ~ .creature .left-eye {
+    border-radius: 8px 8px 6px 6px;
+}
+
+#stable:checked ~ .creature .right-eye {
+    border-radius: 8px 8px 6px 6px;
+}
+
+#stable:checked ~ .creature .eyeball {
+    width: 10px;
+}
+
+#stable:checked ~ .creature .mouth {
+    width: 30px;
+    height: 7px;
+}
+
+
+/* ------------------------------------- */
+/* Fever */
+
+#fever:checked ~ .creature {
+    background-color: rgb(255, 196, 0);
+}
+
+#fever:checked ~ .creature .main-part {
+    background-color: rgb(255, 37, 8);
+}
+
+#fever:checked ~ .creature .left-paw {
+    background-color: rgb(255, 37, 8);
+}
+
+#fever:checked ~ .creature .right-paw {
+    background-color: rgb(255, 37, 8);
+}
+
+#fever:checked ~ .creature .left-eye {
+    background-color: rgb(255, 174, 0);
+    border-radius: 10px 10px 7px 7px;
+}
+
+#fever:checked ~ .creature .right-eye {
+    background-color: rgb(255, 174, 0);
+    border-radius: 14px 14px 10px 10px;
+}
+
+#fever:checked ~ .creature .mouth {
+    background-color: rgb(255, 136, 0);
+    width: 15px;
+    height: 25px;
+    border-radius: 4px 4px 2px 2px;
+}
+
+
+/* ------------------------------------- */
+/* Mutation */
+
+#mutation:checked ~ .creature {
+    background-color: brown;
+}
+
+#mutation:checked ~ .creature .left-eye {
+    width: 20px;
+    height: 6px;
+}
+
+#mutation:checked ~ .creature .right-eye {
+    height: 50px;
+}
+
+#mutation:checked ~ .creature .mouth {
+    width: 15px;
+}
+
+#mutation:checked ~ .creature .left-paw {
+    width: 50px;
+    height: 200px;
+}
+
+
+/* ------------------------------------- */
+/* Paralyzed */
+
+#paralyzed:checked ~ .creature {
+    background-color: #000;
+}
+
+#paralyzed:checked ~ .creature .right-eye {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+#paralyzed:checked ~ .creature .left-eye {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+#paralyzed:checked ~ .creature .eyeball {
+    width: 5px;
+    height: 5px;
+}
+
+#paralyzed:checked ~ .creature .mouth {
+    width: 10px;
+    height: 20px;
+    border-radius: 2px;
+}
+
+
+/* ------------------------------------- */
+/* Focus mode */
+
+#focus-mode:checked ~ .creature {
+    background-color: rgb(72, 255, 0);
+}
+
+#focus-mode:checked ~ .creature .left-eye {
+    border-radius: 50%;
+}
+
+#focus-mode:checked ~ .creature .right-eye {
+    border-radius: 50%;
+}
+
+#focus-mode:checked ~ .creature .eyeball {
+    width: 6px;
+    height: 5px;
+}
+
+#focus-mode:checked ~ .creature .mouth {
+    height: 3px;
+    border-radius: 2px;
+}
+
+/* ------------------------------------- */
+
+/* States end */
+/* ------------------------------------- */
+
+
+/* ------------------------------------- */
+/* Creature */
+
+.creature {
+    width: 200px;
+    height: 120px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    padding-top: 25px;
+    background-color: black;
+    border-radius: 7px;
+    background-color: greenyellow;
+}
+
+.left-paw, .right-paw {
+    width: 22px;
+    height: 120px;
+    background-color: green;
+}
+
+.left-paw {
+    transform: rotate(0.02turn);
+    border-radius: 10px 0 2px 2px;
+}
+
+.right-paw {
+    transform: rotate(-0.02turn);
+    border-radius: 0 10px 2px 2px;
+}
+
+.main-part {
+    display: grid;
+    width: 100px;
+    height: 100px;
+    border-radius: 3px 3px 5px 5px;
+    background-color: green;
+}
+
+.eyes {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.eyeball {
+    width: 7px;
+    height: 7px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.left-eye, .right-eye {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 15px;
+    border: 0.1px solid rgb(1, 83, 1);
+    border-radius: 10px 10px 14px 14px;
+    background-color: #fff;
+}
+
+.mouth-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mouth {
+    width: 40px;
+    height: 4px;
+    border: 0.1px solid rgb(1, 83, 1);
+    border-radius: 1px 1px 5px 5px;
+    background-color: #fff;
+}
+
+/* ------------------------------------- */
