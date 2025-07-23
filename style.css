@@ -1,9 +1,201 @@
 body {
-    font: 1.5em / 1.5 sans-serif;
+    font: 1.2em / 1.5 sans-serif;
+}
+
+.controller {
+    display: grid;
+    justify-items: center;
+}
+
+input[type="radio"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+input[type="radio"]:focus-visible + label {
+    background-color: #ccc;
+}
+
+label {
+    cursor: pointer;
+    padding: 4px 8px;
+    margin: 3px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+label:hover {
+    background: #ddd;
+}
+
+#stable:checked ~ label[for="stable"], 
+#fever:checked ~ label[for=fever],
+#mutation:checked ~ label[for=mutation],
+#paralyzed:checked ~ label[for=paralyzed],
+#focus-mode:checked ~ label[for=focus-mode] {
+    background: #ccc;
+    font-weight: bold;
+}
+
+
+/* ------------------------------------- */
+/* General animations */
+
+.left-eye, .right-eye {
+    animation: blinkingEyes 4s infinite;
+}
+
+@keyframes blinkingEyes {
+    0%, 3% {
+        transform: scaleY(1);
+    }
+    2% {
+        transform: scaleY(0);
+    }
+}
+
+.eyeball {
+    animation: animationEyeball 20s infinite
+}
+
+@keyframes animationEyeball {
+    0%, 10%, 30%, 70%, 90% {
+        transform: translate(0%);
+    }
+    20% {
+        transform: translate(50%);
+    }
+    25% {
+        transform: translate(50%, -40%);
+    }
+    80% {
+        transform: translate(-50%);
+    }
+    85% {
+        transform: translate(-50%, -40%);
+    }
+}
+
+.main-part {
+    animation: breathing 3s infinite;
+}
+
+@keyframes breathing {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(1.02);
+    }
+}
+
+
+/* ------------------------------------- */
+/* Creature */
+
+.creature {
+    width: 300px;
+    height: 180px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    padding-top: 25px;
+    background-color: black;
+    border-radius: 7px;
+    background-color: greenyellow;
+}
+
+.left-paw, .right-paw {
+    width: 33px;
+    height: 180px;
+    background-color: green;
+}
+
+.left-paw {
+    transform: rotate(0.02turn);
+    border-radius: 15px 0 3px 3px;
+}
+
+.right-paw {
+    transform: rotate(-0.02turn);
+    border-radius: 0 15px 3px 3px;
+}
+
+.main-part {
+    display: grid;
+    width: 150px;
+    height: 150px;
+    border-radius: 3px 3px 5px 5px;
+    background-color: green;
+}
+
+.eyes {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.eyeball {
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.left-eye, .right-eye {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    height: 24px;
+    border: 0.1px solid rgb(1, 83, 1);
+    border-radius: 15px 15px 21px 21px;
+    background-color: #fff;
+}
+
+.mouth-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mouth {
+    width: 60px;
+    height: 6px;
+    border: 0.1px solid rgb(1, 83, 1);
+    border-radius: 1px 1px 5px 5px;
+    background-color: #fff;
+}
+
+
+/* ------------------------------------- */
+/* Transitions */
+
+.creature * {
+    transition: all 1.5s ease;
 }
 
 /* ------------------------------------- */
 /* States start */
+
+.state {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    display: none;
+}
+
+#stable:checked ~ .diagnosis .state-stable,
+#fever:checked ~ .diagnosis .state-fever,
+#mutation:checked ~ .diagnosis .state-mutation,
+#paralyzed:checked ~ .diagnosis .state-paralyzed,
+#focus-mode:checked ~ .diagnosis .state-focus-mode {
+    display: block;
+}
 
 /* ------------------------------------- */
 /* Stable */
@@ -21,20 +213,20 @@ body {
 }
 
 #stable:checked ~ .creature .left-eye {
-    border-radius: 8px 8px 6px 6px;
+    border-radius: 12px 12px 9px 9px;
 }
 
 #stable:checked ~ .creature .right-eye {
-    border-radius: 8px 8px 6px 6px;
+    border-radius: 12px 12px 9px 9px;
 }
 
 #stable:checked ~ .creature .eyeball {
-    width: 10px;
+    width: 15px;
 }
 
 #stable:checked ~ .creature .mouth {
-    width: 30px;
-    height: 7px;
+    width: 45px;
+    height: 10px;
 }
 
 
@@ -59,19 +251,32 @@ body {
 
 #fever:checked ~ .creature .left-eye {
     background-color: rgb(255, 174, 0);
-    border-radius: 10px 10px 7px 7px;
+    border-radius: 15px 15px 10px 10px;
 }
 
 #fever:checked ~ .creature .right-eye {
     background-color: rgb(255, 174, 0);
-    border-radius: 14px 14px 10px 10px;
+    border-radius: 21px 21px 15px 15px;
 }
 
 #fever:checked ~ .creature .mouth {
     background-color: rgb(255, 136, 0);
-    width: 15px;
-    height: 25px;
-    border-radius: 4px 4px 2px 2px;
+    width: 21px;
+    height: 37px;
+    border-radius: 6px 6px 3px 3px;
+}
+
+#fever:checked ~ .creature .eyeball {
+    animation: desperateEyes 1s infinite;
+}
+
+@keyframes desperateEyes {
+    0%, 100% {
+        transform: translate(-5%, -40%);
+    }
+    50% {
+        transform: translate(5%, -40%);
+    }
 }
 
 
@@ -83,21 +288,21 @@ body {
 }
 
 #mutation:checked ~ .creature .left-eye {
-    width: 20px;
-    height: 6px;
+    width: 25px;
+    height: 9px;
 }
 
 #mutation:checked ~ .creature .right-eye {
-    height: 50px;
+    height: 75px;
 }
 
 #mutation:checked ~ .creature .mouth {
-    width: 15px;
+    width: 21px;
 }
 
 #mutation:checked ~ .creature .left-paw {
-    width: 50px;
-    height: 200px;
+    width: 75px;
+    height: 300px;
 }
 
 
@@ -109,26 +314,27 @@ body {
 }
 
 #paralyzed:checked ~ .creature .right-eye {
-    width: 25px;
-    height: 25px;
+    width: 37px;
+    height: 37px;
     border-radius: 50%;
 }
 
 #paralyzed:checked ~ .creature .left-eye {
-    width: 25px;
-    height: 25px;
+    width: 37px;
+    height: 37px;
     border-radius: 50%;
 }
 
 #paralyzed:checked ~ .creature .eyeball {
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
+    animation: none;
 }
 
 #paralyzed:checked ~ .creature .mouth {
-    width: 10px;
-    height: 20px;
-    border-radius: 2px;
+    width: 15px;
+    height: 30px;
+    border-radius: 6px;
 }
 
 
@@ -148,13 +354,14 @@ body {
 }
 
 #focus-mode:checked ~ .creature .eyeball {
-    width: 6px;
-    height: 5px;
+    width: 9px;
+    height: 8px;
+    animation: none;
 }
 
 #focus-mode:checked ~ .creature .mouth {
-    height: 3px;
-    border-radius: 2px;
+    height: 4px;
+    border-radius: 3px;
 }
 
 /* ------------------------------------- */
@@ -163,82 +370,3 @@ body {
 /* ------------------------------------- */
 
 
-/* ------------------------------------- */
-/* Creature */
-
-.creature {
-    width: 200px;
-    height: 120px;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    margin: 20px auto;
-    padding-top: 25px;
-    background-color: black;
-    border-radius: 7px;
-    background-color: greenyellow;
-}
-
-.left-paw, .right-paw {
-    width: 22px;
-    height: 120px;
-    background-color: green;
-}
-
-.left-paw {
-    transform: rotate(0.02turn);
-    border-radius: 10px 0 2px 2px;
-}
-
-.right-paw {
-    transform: rotate(-0.02turn);
-    border-radius: 0 10px 2px 2px;
-}
-
-.main-part {
-    display: grid;
-    width: 100px;
-    height: 100px;
-    border-radius: 3px 3px 5px 5px;
-    background-color: green;
-}
-
-.eyes {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-end;
-}
-
-.eyeball {
-    width: 7px;
-    height: 7px;
-    background-color: #000;
-    border-radius: 50%;
-}
-
-.left-eye, .right-eye {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 25px;
-    height: 15px;
-    border: 0.1px solid rgb(1, 83, 1);
-    border-radius: 10px 10px 14px 14px;
-    background-color: #fff;
-}
-
-.mouth-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mouth {
-    width: 40px;
-    height: 4px;
-    border: 0.1px solid rgb(1, 83, 1);
-    border-radius: 1px 1px 5px 5px;
-    background-color: #fff;
-}
-
-/* ------------------------------------- */
