@@ -14,10 +14,6 @@ input[type="radio"] {
     opacity: 0;
 }
 
-input[type="radio"]:focus-visible + label {
-    background-color: #ccc;
-}
-
 label {
     cursor: pointer;
     padding: 4px 8px;
@@ -30,6 +26,23 @@ label {
 
 label:hover {
     background: #ddd;
+}
+
+input[type="radio"]:focus-visible + label {
+    outline: 3px dashed #555;
+    outline-offset: 2px;
+    background-color: #ddd;
+    border-radius: 10px;
+    animation: pulse-focus 0.3s ease-in-out;
+}
+
+@keyframes pulse-focus {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
 }
 
 #stable:checked ~ label[for="stable"], 
